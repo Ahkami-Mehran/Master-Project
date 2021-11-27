@@ -1,0 +1,3 @@
+[submodule "convmixer"]
+	path = convmixer
+	url = git@github.com:Ahkami-Mehran/convmixer.git
