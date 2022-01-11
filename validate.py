@@ -13,6 +13,7 @@ import csv
 import glob
 import time
 import logging
+from typing import Dict
 import torch
 import torch.nn as nn
 import torch.nn.parallel
@@ -21,7 +22,11 @@ from contextlib import suppress
 
 from timm.models import create_model, apply_test_time_pool, load_checkpoint, is_model, list_models
 from timm.data import create_dataset, create_loader, resolve_data_config, RealLabelsImagenet
-from timm.utils import accuracy, AverageMeter, natural_key, setup_default_logging, set_jit_legacy
+from timm.utils import accuracy, AverageMeter, natural_key, set_jit_legacy, setup_default_logging
+
+from base.helper import setup_logger
+
+
 
 has_apex = False
 try:
@@ -108,6 +113,8 @@ parser.add_argument('--real-labels', default='', type=str, metavar='FILENAME',
                     help='Real labels JSON file for imagenet evaluation')
 parser.add_argument('--valid-labels', default='', type=str, metavar='FILENAME',
                     help='Valid label indices txt file for validation of partial label space')
+parser.add_argument('--ImageNet', default=200, type=int,
+                    help="This returns the default ")
 
 
 def validate(args):
@@ -275,10 +282,15 @@ def validate(args):
 
 
 def main():
-    setup_default_logging()
+
     args = parser.parse_args()
     model_cfgs = []
     model_names = []
+
+    # TODO: create logger based on args
+    # setup_logger(args)
+    setup_default_logging()
+
     if os.path.isdir(args.checkpoint):
         # validate all checkpoints in a path with same model
         checkpoints = glob.glob(args.checkpoint + '/*.pth.tar')
@@ -335,17 +347,21 @@ def main():
         if len(results):
             write_results(results_file, results)
     else:
-        validate(args)
+        return validate(args)
 
 
-def write_results(results_file, results):
+def write_results(results_file, results:Dict):
+    # TODO: Here the csv is not created. I have to look into it. 
+    # TODO: After creating the write output in csv format or any other format(maybe json)
+    # it is necessary to start preparing the plots.
+
     with open(results_file, mode='w') as cf:
-        dw = csv.DictWriter(cf, fieldnames=results[0].keys())
+        dw = csv.DictWriter(cf, fieldnames=results.keys())
         dw.writeheader()
-        for r in results:
-            dw.writerow(r)
+        dw.writerow(results)
         cf.flush()
 
 
 if __name__ == '__main__':
-    main()
+    results = main()
+    write_results("results.csv", results)
