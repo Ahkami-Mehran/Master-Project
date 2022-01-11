@@ -24,9 +24,6 @@ from timm.models import create_model, apply_test_time_pool, load_checkpoint, is_
 from timm.data import create_dataset, create_loader, resolve_data_config, RealLabelsImagenet
 from timm.utils import accuracy, AverageMeter, natural_key, set_jit_legacy, setup_default_logging
 
-from base.helper import setup_logger
-
-
 
 has_apex = False
 try:
@@ -287,8 +284,6 @@ def main():
     model_cfgs = []
     model_names = []
 
-    # TODO: create logger based on args
-    # setup_logger(args)
     setup_default_logging()
 
     if os.path.isdir(args.checkpoint):
