@@ -8,7 +8,7 @@ model='convmixer_1024_20'
 classes=1000
 checkpoint="./trained_models/convmixer_1024_20_ks9_p14.pth.tar"
 output="results.json"
-data="./data/dev" 
+data="/misc/lmbraid19/datasets/ImageNet/Corrupted" 
 
 source "/misc/student/ahkamian/Master-Project/.venv/bin/activate"
 python validate.py --model $model --b 64 --num-classes $classes --checkpoint $checkpoint --results-file $output $data
