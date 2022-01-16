@@ -10,7 +10,5 @@ checkpoint="./trained_models/convmixer_1024_20_ks9_p14.pth.tar"
 output="results.json"
 data="./data/dev" 
 
-echo `hostname`
 source "/misc/student/ahkamian/Master-Project/.venv/bin/activate"
-echo 'Test'
-# python validate.py --model $model --b 64 --num-classes $classes --checkpoint $checkpoint --results-file $output $data
+python validate.py --model $model --b 64 --num-classes $classes --checkpoint $checkpoint --results-file $output $data
