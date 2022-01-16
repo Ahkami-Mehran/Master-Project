@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": ["--model", "convmixer_1024_20", "--b", "64", "--num-classes", "1000",
+                     "--checkpoint", "/home/mehran/Documents/Master_Freiburg/Master Project/Code/Master-Project/trained_models/convmixer_1024_20_ks9_p14.pth.tar",
+                     "--results-file", "results_dev.json",
+                     "/home/mehran/Documents/Master_Freiburg/Master Project/Code/Master-Project/data/dev"]
+        }
+    ]
+}
