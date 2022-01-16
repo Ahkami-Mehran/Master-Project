@@ -11,6 +11,6 @@ output="results.json"
 data="./data/dev" 
 
 echo `hostname`
-source .venv/bin/activate
+source "/misc/student/ahkamian/Master-Project/.venv/bin/activate"
 echo 'Test'
 # python validate.py --model $model --b 64 --num-classes $classes --checkpoint $checkpoint --results-file $output $data
