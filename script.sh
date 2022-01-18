@@ -5,7 +5,7 @@
 #PBS -q student
 model='convmixer_1024_20'
 classes=1000
-checkpoint="./trained_models/convmixer_1024_20_ks9_p14.pth.tar"
+checkpoint="/misc/student/ahkamian/Master-Project/trained_models/convmixer_1024_20_ks9_p14.pth.tar"
 output="results.json"
 data="/misc/lmbraid19/datasets/ImageNet/Corrupted"
 
