@@ -348,6 +348,7 @@ def validate(args):
     dataset_name = dataset_path.name
     folders = [str(x) for x in dataset_path.iterdir() if x.is_dir()]
     severitys = ["1", "2", "3", "4", "5"]
+    #severitys = ["1"]
     results = []
 
     # In order to record metrics for each severity and folder
@@ -570,9 +571,7 @@ def write_results(results_file: str, results: str, model: str, dataset: str):
     # TODO: Here the csv is not created. I have to look into it.
     # TODO: After creating the write output in csv format or any other format(maybe json)
     # it is necessary to start preparing the plots.
-    parent_path = pathlib.Path.joinpath(
-        pathlib.Path().resolve(), "results", dataset, model
-    )
+    parent_path = pathlib.Path.joinpath(pathlib.Path("/misc/student/ahkamian/Master-Project"), "results", dataset, model)
     parent_path.mkdir(parents=True, exist_ok=True)
 
     output_file = pathlib.Path.joinpath(parent_path, results_file)
