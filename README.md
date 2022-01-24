@@ -57,3 +57,5 @@ This project is dependant on ```python=3.8```. These are the necessary steps to 
 2. I need to change logger and save results in file or comparable formats
 
 3. There are summary of implementations in "Master project" onenote fil
+
+4. The ImageNet-R folder structure is different. So, I decided to create one branch for each specific experiment in order to redo evaluations faster in future.
