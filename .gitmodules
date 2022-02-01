@@ -1,3 +1,6 @@
 [submodule "convmixer"]
 	path = convmixer
 	url = git@github.com:Ahkami-Mehran/convmixer.git
+[submodule "deit"]
+	path = deit
+	url = git@github.com:Ahkami-Mehran/deit.git
